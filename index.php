@@ -15,37 +15,47 @@ organizzate il progetto come visto stamattina a lezione usando varie sottocartel
 
 <?php
 
-// class Stock
-// {
-//     public $quantity;
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-//     // CONTRUSCTOR
-//     public function __construct($productQty)
-//     {
-//         $this->quantity = $productQty;
-//     }
+class Category
+{
+    public $pet;
+    public $icon;
 
-//     public function getQty()
-//     {
-//         return $this->quantity;
-//     }
-// }
+    public function __construct(string $petType, string  $iconSrc)
+    {
+        $this->pet = $petType;
+        $this->icon = $iconSrc;
+    }
+
+    public function getPet()
+    {
+        return $this->pet;
+    }
+
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+}
+
+$dogCategory = new Category('Cani', '<i class="fa-solid fa-dog"></i>');
+
+$catCategory = new Category('Gatti', '<i class="fa-solid fa-cat"></i>');
 
 class Product
 {
     public $name;
-    public $type;
-    public $size;
-    public $color;
     public $price;
+    public $code;
+    public $stock;
 
-    public function __construct($producName, $productType, $productSize, $productColor, $productPrice)
+    public function __construct(string $producName, float $productPrice, int $productCode)
     {
         $this->name = $producName;
-        $this->type = $productType;
-        $this->size = $productSize;
-        $this->color = $productColor;
         $this->price = $productPrice;
+        $this->code = $productCode;
     }
 
     public function getName()
@@ -53,53 +63,106 @@ class Product
         return $this->name;
     }
 
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    public function getColor()
-    {
-        return $this->color;
-    }
-
     public function getPrice()
     {
         return $this->price;
     }
-}
 
-
-// PRODUCT[ANIMALE --> CATEGORY(ITEM DATA)]
-
-
-class Item extends Product
-{
-
-    public $stock;
-
-    public function __construct($name, $type, $size, $color, $price, $productStock)
+    public function getCode()
     {
-        parent::__construct($name, $type, $size, $color, $price);
-        $this->stock = $productStock;
+        return $this->code;
+    }
+
+    public function getStock()
+    {
+        return $this->stock;
     }
 }
 
+class Toy extends Product
+{
+
+    //FROM CLASS Category
+    public $category;
+
+    // ISTANCE VARIABLES
+    public $color;
+    public $material;
+    public $size;
+
+
+    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productColor, string $productMaterial, string $productSize)
+    {
+        $this->category = $productCategory;
+        parent::__construct($name, $price, $code, $stock);
+        $this->color = $productColor;
+        $this->material = $productMaterial;
+        $this->size = $productSize;
+    }
+}
+
+class Food extends Product
+{
+    //FROM CLASS Category
+    public $category;
+
+    // ISTANCE VARIABLES
+    public $weight;
+    public $calories;
+    public $age;
+
+
+    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productWeigth, string $productCalories, string $productAge)
+    {
+        $this->category = $productCategory;
+        parent::__construct($name, $price, $code, $stock);
+        $this->weight = $productWeigth;
+        $this->calories = $productCalories;
+        $this->age = $productAge;
+    }
+}
+
+class Kennel extends Product
+{
+    //FROM CLASS Category
+    public $category;
+
+    // ISTANCE VARIABLES
+    public $weight;
+    public $heigth;
+    public $width;
+    public $length;
+    public $material;
+    public $color;
+
+
+    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productWeigth, string $productHeigth, string $productWidth, string $productLength, string $productMaterial, string $productColor)
+    {
+        $this->category = $productCategory;
+        parent::__construct($name, $price, $code, $stock);
+        $this->weight = $productWeigth;
+        $this->heigth = $productHeigth;
+        $this->width = $productWidth;
+        $this->length = $productLength;
+        $this->material = $productMaterial;
+        $this->color = $productColor;
+    }
+}
+
+$kongBig = new Item($dogCategory, 50, 'Kong XL', 'toy', 'big', 'green', 10);
+
+$kong = new Item($dogCategory, 50, 'Kong', 'toy', 'small', 'red', 10,);
+
+$mongee = new Item($dogCategory, 60, 'Mongee', 'food', 'big', '', 100);
+
+$friskees = new Item($catCategory, 60, 'Friskees', 'food', 'small', '', 50);
+
 $productsList = [];
+array_push($productsList, $kong, $kongBig, $mongee, $friskees);
 
-$kong = new Item('Kong', 'toy', 'small', 'red', 10, 50);
-
-$monge = new Item('Monge', 'food', 'big', null, 50, 100);
-
-array_push($productsList, $kong, $monge);
-
-var_dump($productsList);
-
+// var_dump($productsList);
+// var_dump($productsList[0]->category->pet);
+// var_dump($productsList[0]->type)
 ?>
 
 <!DOCTYPE html>
@@ -108,21 +171,50 @@ var_dump($productsList);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OOP -2</title>
+    <title>OOP - 2</title>
 </head>
 
 <body>
 
+    <h1>Gatti</h1>
+    <hr>
+
     <?php foreach ($productsList as $product) : ?>
 
-        <?php if ($product->type == 'toy') : ?>
-            <p><?= $product->getName() ?></p>
+        <?php if ($product->category->pet == 'Gatti') : ?>
+
+
+            <?php if ($product->type == 'toy') : ?>
+                <p><?= $product->getName() ?></p>
+            <?php endif ?>
+
+            <?php if ($product->type == 'food') : ?>
+                <p><?= $product->getName() ?></p>
+            <?php endif ?>
+
+        <?php endif ?>
+    <?php endforeach; ?>
+
+    <h1>Cani</h1>
+    <hr>
+
+    <?php foreach ($productsList as $product) : ?>
+
+        <?php if ($product->category->pet == 'Cani') : ?>
+
+            <?php if ($product->type == 'toy') : ?>
+
+                <p><?= $product->getName() ?></p>
+
+            <?php endif ?>
+
+            <?php if ($product->type == 'food') : ?>
+                <p><?= $product->getName() ?></p>
+            <?php endif ?>
+
         <?php endif ?>
 
-        <?php if ($product->type == 'food') : ?>
-            <p><?= $product->getName() ?></p>
-        <?php endif ?>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 
 </body>
 
