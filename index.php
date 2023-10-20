@@ -260,11 +260,16 @@ array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almo
 <body>
 
 
+    <header>
+        <h1 class="text-center my-4">Il Meglio per i nostri amici animali</h1>
+    </header>
+
+
     <div class="container">
 
-        <h1>Gatti</h1>
-        <hr>
-        <div class="row g-3">
+        <h2 class="text-center my-3">Gatti</h2>
+
+        <div class="row g-3 mb-3">
 
             <?php foreach ($productsList as $product) : ?>
 
@@ -274,10 +279,10 @@ array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almo
 
                         <div class="card shadow" style="height: 700px;">
 
-                            <div class="img-container">
+                            <div class="img-container position-relative">
                                 <img src="https://picsum.photos/200" class="card-img-top" alt="<?= $product->getName() ?>">
-                                <div class="icon-container">
-                                    <h5><?= $product->category->getIcon() ?></h5>
+                                <div class="icon-container position-absolute top-0 start-0">
+                                    <h1 class="text-light p-2"><?= $product->category->getIcon() ?></h1>
                                 </div>
                             </div>
 
@@ -329,10 +334,9 @@ array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almo
 
         </div>
 
-        <h1>Cani</h1>
-        <hr>
+        <h2 class="text-center my-3">Cani</h2>
 
-        <div class="row g-3">
+        <div class="row g-3 mb-3">
 
             <?php foreach ($productsList as $product) : ?>
 
@@ -342,10 +346,10 @@ array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almo
 
                         <div class="card shadow" style="height: 700px;">
 
-                            <div class="img-container">
+                            <div class="img-container position-relative">
                                 <img src="https://picsum.photos/200" class="card-img-top" alt="<?= $product->getName() ?>">
-                                <div class="icon-container">
-                                    <h5><?= $product->category->getIcon() ?></h5>
+                                <div class="icon-container position-absolute top-0 start-0">
+                                    <h1 class="text-light p-2"><?= $product->category->getIcon() ?></h1>
                                 </div>
                             </div>
 
