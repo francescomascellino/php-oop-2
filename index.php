@@ -51,7 +51,7 @@ class Product
     public $code;
     public $stock;
 
-    public function __construct(string $producName, float $productPrice, int $productCode)
+    public function __construct(string $producName, float $productPrice, string $productCode)
     {
         $this->name = $producName;
         $this->price = $productPrice;
@@ -90,14 +90,34 @@ class Toy extends Product
     public $material;
     public $size;
 
+    public $type = 'toy';
 
-    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productColor, string $productMaterial, string $productSize)
+    public function __construct($productCategory, string $name, float $price, string $code, int $stock, string $productColor, string $productMaterial, string $productSize)
     {
         $this->category = $productCategory;
+
+        //PARENT VARIABLES
         parent::__construct($name, $price, $code, $stock);
+
+        // ISTANCE VARIABLES MARKING
         $this->color = $productColor;
         $this->material = $productMaterial;
         $this->size = $productSize;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
+    public function getSize()
+    {
+        return $this->size;
     }
 }
 
@@ -111,14 +131,34 @@ class Food extends Product
     public $calories;
     public $age;
 
+    public $type = 'food';
 
-    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productWeigth, string $productCalories, string $productAge)
+    public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productCalories, string $productAge)
     {
         $this->category = $productCategory;
+
+        //PARENT VARIABLES
         parent::__construct($name, $price, $code, $stock);
+
+        // ISTANCE VARIABLES MARKING
         $this->weight = $productWeigth;
         $this->calories = $productCalories;
         $this->age = $productAge;
+    }
+
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    public function getCalories()
+    {
+        return $this->calories;
+    }
+
+    public function getAge()
+    {
+        return $this->age;
     }
 }
 
@@ -132,14 +172,19 @@ class Kennel extends Product
     public $heigth;
     public $width;
     public $length;
-    public $material;
     public $color;
+    public $material;
 
+    public $type = 'kennel';
 
-    public function __construct($productCategory, string $name, string $price, string $code, int $stock, string $productWeigth, string $productHeigth, string $productWidth, string $productLength, string $productMaterial, string $productColor)
+    public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productHeigth, float $productWidth, float $productLength, string $productColor, string $productMaterial)
     {
         $this->category = $productCategory;
+
+        //PARENT VARIABLES
         parent::__construct($name, $price, $code, $stock);
+
+        // ISTANCE VARIABLES MARKING
         $this->weight = $productWeigth;
         $this->heigth = $productHeigth;
         $this->width = $productWidth;
@@ -147,22 +192,43 @@ class Kennel extends Product
         $this->material = $productMaterial;
         $this->color = $productColor;
     }
+
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    public function getMesurements()
+    {
+        return "H $this->heigth cm, W $this->width cm, L $this->length cm";
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    public function getMaterial()
+    {
+        return $this->material;
+    }
 }
 
-$kongBig = new Item($dogCategory, 50, 'Kong XL', 'toy', 'big', 'green', 10);
+// TOYS
+$kong = new Toy($dogCategory, 'Kong', 10.99, '01KONG', 10, 'Rosso', 'Gomma', 'piccola');
+$fresbee = new Toy($dogCategory, 'Fresbee', 4, '02FREE', 20, 'Verde', 'Plastica', 'qualsiasi');
+$mouse = new Toy($catCategory, 'Topo Giocattolo', 1.50, '03TOPO', 30, 'Grigio/Rosa', 'Tessuto', 'qualsiasi');
+$laser = new Toy($catCategory, 'Laser', 8.50, '04LAS', 23, 'Rosso', 'Metallo', 'qualsiasi');
 
-$kong = new Item($dogCategory, 50, 'Kong', 'toy', 'small', 'red', 10,);
 
-$mongee = new Item($dogCategory, 60, 'Mongee', 'food', 'big', '', 100);
-
-$friskees = new Item($catCategory, 60, 'Friskees', 'food', 'small', '', 50);
 
 $productsList = [];
-array_push($productsList, $kong, $kongBig, $mongee, $friskees);
+array_push($productsList, $kong, $fresbee, $mouse, $laser);
 
-// var_dump($productsList);
-// var_dump($productsList[0]->category->pet);
-// var_dump($productsList[0]->type)
+var_dump($productsList);
+
+// die;
+
 ?>
 
 <!DOCTYPE html>
@@ -172,49 +238,86 @@ array_push($productsList, $kong, $kongBig, $mongee, $friskees);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OOP - 2</title>
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'>
 </head>
 
 <body>
 
-    <h1>Gatti</h1>
-    <hr>
 
-    <?php foreach ($productsList as $product) : ?>
-
-        <?php if ($product->category->pet == 'Gatti') : ?>
+    <div class="container">
 
 
-            <?php if ($product->type == 'toy') : ?>
-                <p><?= $product->getName() ?></p>
-            <?php endif ?>
+        <h1>Gatti</h1>
+        <hr>
+        <div class="row">
 
-            <?php if ($product->type == 'food') : ?>
-                <p><?= $product->getName() ?></p>
-            <?php endif ?>
+            <?php foreach ($productsList as $product) : ?>
 
-        <?php endif ?>
-    <?php endforeach; ?>
+                <?php if ($product->category->pet == 'Gatti') : ?>
 
-    <h1>Cani</h1>
-    <hr>
+                    <div class="col">
 
-    <?php foreach ($productsList as $product) : ?>
+                        <div class="card">
 
-        <?php if ($product->category->pet == 'Cani') : ?>
+                            <?php if ($product->type == 'toy') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
 
-            <?php if ($product->type == 'toy') : ?>
+                            <?php if ($product->type == 'food') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
 
-                <p><?= $product->getName() ?></p>
+                            <?php if ($product->type == 'kennel') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
 
-            <?php endif ?>
+                        </div>
 
-            <?php if ($product->type == 'food') : ?>
-                <p><?= $product->getName() ?></p>
-            <?php endif ?>
+                    </div>
 
-        <?php endif ?>
+                <?php endif ?>
 
-    <?php endforeach; ?>
+            <?php endforeach; ?>
+
+        </div>
+
+
+        <h1>Cani</h1>
+        <hr>
+
+        <div class="row">
+
+            <?php foreach ($productsList as $product) : ?>
+
+                <?php if ($product->category->pet == 'Cani') : ?>
+
+                    <div class="col">
+
+                        <div class="card">
+
+                            <?php if ($product->type == 'toy') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
+
+                            <?php if ($product->type == 'food') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
+
+                            <?php if ($product->type == 'kennel') : ?>
+                                <p><?= $product->getName() ?></p>
+                            <?php endif ?>
+
+                        </div>
+
+                    </div>
+
+                <?php endif ?>
+
+            <?php endforeach; ?>
+
+        </div>
+    </div>
 
 </body>
 
