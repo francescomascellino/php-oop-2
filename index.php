@@ -51,11 +51,12 @@ class Product
     public $code;
     public $stock;
 
-    public function __construct(string $producName, float $productPrice, string $productCode)
+    public function __construct(string $producName, float $productPrice, string $productCode, $productStock)
     {
         $this->name = $producName;
         $this->price = $productPrice;
         $this->code = $productCode;
+        $this->stock = $productStock;
     }
 
     public function getName()
@@ -220,12 +221,24 @@ $fresbee = new Toy($dogCategory, 'Fresbee', 4, '02FREE', 20, 'Verde', 'Plastica'
 $mouse = new Toy($catCategory, 'Topo Giocattolo', 1.50, '03TOPO', 30, 'Grigio/Rosa', 'Tessuto', 'qualsiasi');
 $laser = new Toy($catCategory, 'Laser', 8.50, '04LAS', 23, 'Rosso', 'Metallo', 'qualsiasi');
 
+// FOOD
+$mongee = new Food($dogCategory, 'Mongee', 52, '05MONGE', 35, 15, 250, "Adulti");
+$oasy = new Food($dogCategory, 'Oasy', 14.65, '06OASY', 42, 2.5, 120, 'Cuccioli');
+$almonature = new Food($catCategory, 'Almo Nature', 49.90, '07ALMO', 9, 12, 140, 'Cuccioli');
+$exclusion = new Food($catCategory, 'Exclusion', 17, '08EXCLU', 17, 1.5, 158, 'Adulti');
+
+// KENNEL
+$woodKennel = new Kennel($dogCategory, 'Cuccia in Legno Classica', 150, '09WOOD', 2, 60, 80, 50, 100, 'Noce', 'Legno');
+$fluffyBed = new Kennel($dogCategory, 'Letto Morbido Fluffy', 15, '10FLUFFY', 15, 3, 30, 50, 100, 'Bianco', 'Tassuto/Memory Foam');
+$mochi = new Kennel($catCategory, 'Letto Mochi', 24.99, '11MOCHI', 5, 2.5, 25, 55, 55, 'Grigio Chiaro', 'Tessuto/Peluche');
+$mupfel = new Kennel($catCategory, 'Letto Mupfel', 26.99, '12MUPFE', 8, 2, 35, 50, 50, 'Beije/Marrone', 'Poliestere');
+
 
 
 $productsList = [];
-array_push($productsList, $kong, $fresbee, $mouse, $laser);
+array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almonature, $exclusion, $woodKennel, $fluffyBed, $mochi, $mupfel);
 
-var_dump($productsList);
+// var_dump($productsList);
 
 // die;
 
@@ -240,6 +253,8 @@ var_dump($productsList);
     <title>OOP - 2</title>
 
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -247,30 +262,62 @@ var_dump($productsList);
 
     <div class="container">
 
-
         <h1>Gatti</h1>
         <hr>
-        <div class="row">
+        <div class="row g-3">
 
             <?php foreach ($productsList as $product) : ?>
 
                 <?php if ($product->category->pet == 'Gatti') : ?>
 
-                    <div class="col">
+                    <div class="col-4">
 
-                        <div class="card">
+                        <div class="card shadow" style="height: 700px;">
 
-                            <?php if ($product->type == 'toy') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                            <div class="img-container">
+                                <img src="https://picsum.photos/200" class="card-img-top" alt="<?= $product->getName() ?>">
+                                <div class="icon-container">
+                                    <h5><?= $product->category->getIcon() ?></h5>
+                                </div>
+                            </div>
 
-                            <?php if ($product->type == 'food') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                            <div class="card-body">
 
-                            <?php if ($product->type == 'kennel') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                                <?php if ($product->type == 'toy') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Colore: </strong><?= $product->getColor() ?></p>
+                                    <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+
+                                <?php endif ?>
+
+                                <?php if ($product->type == 'food') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
+                                    <p class="mb-1"><strong>Calorie: </strong><?= $product->getCalories() ?>cal</p>
+                                    <p class="mb-1"><strong>Alimento adatto a: </strong><?= $product->getAge() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+                                <?php endif ?>
+
+                                <?php if ($product->type == 'kennel') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
+                                    <p class="mb-1"><strong>Misure: </strong><?= $product->getMesurements() ?></p>
+                                    <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
+                                    <p class="mb-1"><strong>Colore: </strong><?= $product->getColor() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+                                <?php endif ?>
+
+                            </div>
 
                         </div>
 
@@ -282,31 +329,63 @@ var_dump($productsList);
 
         </div>
 
-
         <h1>Cani</h1>
         <hr>
 
-        <div class="row">
+        <div class="row g-3">
 
             <?php foreach ($productsList as $product) : ?>
 
                 <?php if ($product->category->pet == 'Cani') : ?>
 
-                    <div class="col">
+                    <div class="col-4">
 
-                        <div class="card">
+                        <div class="card shadow" style="height: 700px;">
 
-                            <?php if ($product->type == 'toy') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                            <div class="img-container">
+                                <img src="https://picsum.photos/200" class="card-img-top" alt="<?= $product->getName() ?>">
+                                <div class="icon-container">
+                                    <h5><?= $product->category->getIcon() ?></h5>
+                                </div>
+                            </div>
 
-                            <?php if ($product->type == 'food') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                            <div class="card-body">
 
-                            <?php if ($product->type == 'kennel') : ?>
-                                <p><?= $product->getName() ?></p>
-                            <?php endif ?>
+                                <?php if ($product->type == 'toy') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Colore: </strong><?= $product->getColor() ?></p>
+                                    <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+
+                                <?php endif ?>
+
+                                <?php if ($product->type == 'food') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
+                                    <p class="mb-1"><strong>Calorie: </strong><?= $product->getCalories() ?>cal</p>
+                                    <p class="mb-1"><strong>Alimento adatto a: </strong><?= $product->getAge() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+                                <?php endif ?>
+
+                                <?php if ($product->type == 'kennel') : ?>
+                                    <h5><?= $product->getName() ?></h5>
+
+                                    <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                                    <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
+                                    <p class="mb-1"><strong>Misure: </strong><?= $product->getMesurements() ?></p>
+                                    <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
+                                    <p class="mb-1"><strong>Colore: </strong><?= $product->getColor() ?></p>
+                                    <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
+                                    <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
+                                <?php endif ?>
+
+                            </div>
 
                         </div>
 
@@ -317,6 +396,7 @@ var_dump($productsList);
             <?php endforeach; ?>
 
         </div>
+
     </div>
 
 </body>
