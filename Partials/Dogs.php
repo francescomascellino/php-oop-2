@@ -8,7 +8,7 @@
 
             <div class="col-4">
 
-                <div class="card shadow" style="height: 700px;">
+                <div class="card shadow">
 
                     <div class="img-container position-relative">
                         <img src="https://picsum.photos/id/1025/200" class="card-img-top" alt="<?= $product->getName() ?>">
