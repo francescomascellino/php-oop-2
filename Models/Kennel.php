@@ -20,12 +20,12 @@ class Kennel extends Product
     // STATIC ATTRIBUTE
     static public $type = 'kennel';
 
-    public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productHeigth, float $productWidth, float $productLength, string $productColor, string $productMaterial)
+    public function __construct($productCategory, string $name, float $price, string $code, int $stock,  int $discount, float $productWeigth, float $productHeigth, float $productWidth, float $productLength, string $productColor, string $productMaterial)
     {
         $this->category = $productCategory;
 
         //PARENT VARIABLES
-        parent::__construct($name, $price, $code, $stock);
+        parent::__construct($name, $price, $code, $stock, $discount);
 
         // ISTANCE VARIABLES MARKING
         $this->weight = $productWeigth;

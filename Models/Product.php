@@ -6,14 +6,17 @@ class Product
     public $price;
     public $code;
     public $stock;
+    public $discount;
 
 
-    public function __construct(protected string $producName, protected float $productPrice, protected string $productCode, protected int $productStock)
+    // PROTECTED ATTRIBUTES CAN NOT BE EDITED
+    public function __construct(protected string $producName, protected float $productPrice, protected string $productCode, protected int $productStock, int $productDiscount)
     {
         $this->name = $producName;
         $this->price = $productPrice;
         $this->code = $productCode;
         $this->stock = $productStock;
+        $this->discount = $productDiscount;
     }
 
     public function getName()
@@ -36,22 +39,27 @@ class Product
         return $this->stock;
     }
 
-    public function calcAge($yob)
+    public function getDiscountValue()
     {
-        $now = intval(date('Y'));
 
-        if (!is_numeric($yob)) {
+        //EXEPTION (THIS SHOP DOES NOT ALLOWS DISCOUNTS > 60%)
 
-
-            //throw new Exception('It\'s not a number. The calcAge function needs a number to work.', 1);
-            throw new InvalidArgumentException('It\'s not a number. The calcAge function needs a number to work.', 1);
-            // https://www.php.net/manual/en/spl.exceptions.php
-            // https://www.php.net/manual/en/language.exceptions.php
-        } elseif ($yob > $now || $yob < $now - 100) {
-            //throw new Exception('Invalid age range!');
-            throw new RangeException('Invalid age range!');
+        if ($this->discount < 0 || $this->discount > 60) {
+            // SE IL VALORE E' NEGATIVO O MAGGIORE DI 60
+            throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
         }
 
-        return $now - $yob;
+        return $this->discount;
+    }
+
+    //EXEPTION (THIS SHOP DOES NOT ALLOWS DISCOUNTS > 60%)
+    public function setDiscount()
+    {
+        if ($this->discount < 0 || $this->discount > 60) {
+            // SE IL VALORE E' NEGATIVO O MAGGIORE DI 60
+            throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
+        }
+
+        return $this->price - (($this->discount * $this->price) / 100);
     }
 }

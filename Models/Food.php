@@ -12,12 +12,12 @@ class Food extends Product
     // STATIC ATTRIBUTE
     static public $type = 'food';
 
-    public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productCalories, string $productAge)
+    public function __construct($productCategory, string $name, float $price, string $code, int $stock, int $discount, float $productWeigth, float $productCalories, string $productAge)
     {
         $this->category = $productCategory;
 
         //PARENT VARIABLES
-        parent::__construct($name, $price, $code, $stock);
+        parent::__construct($name, $price, $code, $stock, $discount);
 
         // ISTANCE VARIABLES MARKING
         $this->weight = $productWeigth;
