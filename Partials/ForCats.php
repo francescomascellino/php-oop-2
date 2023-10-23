@@ -32,7 +32,7 @@ include __DIR__ . '/head.php';
                         <div class="card shadow">
 
                             <div class="img-container position-relative">
-                                <img src="https://picsum.photos/id/1025/200" class="card-img-top" alt="<?= $product->getName() ?>">
+                                <img src="https://picsum.photos/200?<?= rand(1, 99) ?>" class="card-img-top" alt="<?= $product->getName() ?>">
                                 <div class="icon-container position-absolute top-0 start-0">
                                     <h1 class="text-light p-2"><?= $product->category->getIcon() ?></h1>
                                 </div>
@@ -76,7 +76,7 @@ include __DIR__ . '/head.php';
                         <div class="card shadow">
 
                             <div class="img-container position-relative">
-                                <img src="https://picsum.photos/id/1025/200" class="card-img-top" alt="<?= $product->getName() ?>">
+                                <img src="https://picsum.photos/200?<?= rand(1, 99) ?>" class="card-img-top" alt="<?= $product->getName() ?>">
                                 <div class="icon-container position-absolute top-0 start-0">
                                     <h1 class="text-light p-2"><?= $product->category->getIcon() ?></h1>
                                 </div>
@@ -121,7 +121,7 @@ include __DIR__ . '/head.php';
                         <div class="card shadow">
 
                             <div class="img-container position-relative">
-                                <img src="https://picsum.photos/id/1025/200" class="card-img-top" alt="<?= $product->getName() ?>">
+                                <img src="https://picsum.photos/200?<?= rand(1, 99) ?>" class="card-img-top" alt="<?= $product->getName() ?>">
                                 <div class="icon-container position-absolute top-0 start-0">
                                     <h1 class="text-light p-2"><?= $product->category->getIcon() ?></h1>
                                 </div>
