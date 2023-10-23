@@ -46,7 +46,7 @@ class Product
 
         if ($this->discount < 0 || $this->discount > 60) {
             // SE IL VALORE E' NEGATIVO O MAGGIORE DI 60
-            throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
+            throw new RangeException('INVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
         }
 
         // RETURNS THE DISCOUNT % VALUE
@@ -58,7 +58,7 @@ class Product
     {
         if ($this->discount < 0 || $this->discount > 60) {
             // SE IL VALORE E' NEGATIVO O MAGGIORE DI 60
-            throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
+            throw new RangeException('INVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
         }
 
         // RETURNS THE DISCOUNTED PRICE

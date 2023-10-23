@@ -41,12 +41,10 @@ $mupfel = new Kennel($catCategory, 'Letto Mupfel', 26.99, '12MUPFE', 8, 0, 2, 35
 $productsList = [];
 array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almonature, $exclusion, $woodKennel, $fluffyBed, $mochi, $mupfel);
 
-// REMOVE COMMENT TRO CATCH ERROR ON DISCOUNT ATTRIBUTE
-/* 
+// CATCH ERROR ON DISCOUNT ATTRIBUTE WITH try
 try {
     $testError = new Kennel($catCategory, 'Error Kennel', 100, '13ERR', 100, 80, 100, 100, 100, 100, 'TEST', 'TEST');
     $testError->getDiscountValue();
 } catch (Exception $e) {
-    echo $e;
+    echo $e->getMessage();
 }
-*/
