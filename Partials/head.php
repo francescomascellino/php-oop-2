@@ -25,9 +25,10 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-secondary-subtle shadow">
 
             <div class="container">
+
                 <a class="navbar-brand text-light fw-bold" href="#"><i class="fa-solid fa-paw"></i> OOP Pet Shop</a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#oopNav" aria-controls="oopNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#oopNav" aria-controls="oopNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
