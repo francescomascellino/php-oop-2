@@ -4,7 +4,7 @@ class Category
     public $pet;
     public $icon;
 
-    public function __construct(string $petType, string  $iconSrc)
+    public function __construct(protected string $petType, protected string  $iconSrc)
     {
         $this->pet = $petType;
         $this->icon = $iconSrc;
