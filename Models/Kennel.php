@@ -1,6 +1,11 @@
 <?php
+
 class Kennel extends Product
 {
+
+    // USE TRAIT TO ACQUIRE GETTERS
+    use MaterialInfo;
+
     //FROM CLASS Category
     public $category;
 
@@ -40,6 +45,7 @@ class Kennel extends Product
         return "H $this->heigth cm, W $this->width cm, L $this->length cm";
     }
 
+    /* THESE METHODS CAN BE REMOVED AS NOW THEY ARE PART OF THE MaterialInfo TRAIT
     public function getColor()
     {
         return $this->color;
@@ -48,5 +54,5 @@ class Kennel extends Product
     public function getMaterial()
     {
         return $this->material;
-    }
+    } */
 }

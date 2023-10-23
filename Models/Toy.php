@@ -1,6 +1,10 @@
 <?php
+
 class Toy extends Product
 {
+
+    // USE TRAIT TO ACQUIRE GETTERS
+    use MaterialInfo;
 
     //FROM CLASS Category
     public $category;
@@ -25,6 +29,7 @@ class Toy extends Product
         $this->size = $productSize;
     }
 
+    /* THESE METHODS CAN BE REMOVED AS NOW THEY ARE PART OF THE MaterialInfo TRAIT
     public function getColor()
     {
         return $this->color;
@@ -33,7 +38,7 @@ class Toy extends Product
     public function getMaterial()
     {
         return $this->material;
-    }
+    } */
 
     public function getSize()
     {

@@ -1,5 +1,9 @@
 <?php
 
+// IMPORTS THE REQUIRED TRAIT
+include __DIR__ . '/../Traits/MaterialInfo.php';
+
+// IMPORTS THE CLASSES
 require __DIR__ . '/../Models/Product.php';
 
 require __DIR__ . '/../Models/Category.php';
