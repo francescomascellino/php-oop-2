@@ -29,7 +29,7 @@ $laser = new Toy($catCategory, 'Laser', 8.50, '04LAS', 23, 10, 'Rosso', 'Metallo
 $mongee = new Food($dogCategory, 'Mongee', 52, '05MONGE', 35, 0, 15, 250, "Adulti");
 $oasy = new Food($dogCategory, 'Oasy', 14.65, '06OASY', 42, 10, 2.5, 120, 'Cuccioli');
 $almonature = new Food($catCategory, 'Almo Nature', 49.90, '07ALMO', 9, 0, 12, 140, 'Cuccioli');
-$exclusion = new Food($catCategory, 'Exclusion', 17, '08EXCLU', 17, 0, 1.5, 158, 'Adulti');
+$exclusion = new Food($catCategory, 'Exclusion', 17, '08EXCLU', 17, 15, 1.5, 158, 'Adulti');
 
 // KENNELS
 $woodKennel = new Kennel($dogCategory, 'Cuccia in Legno Classica', 150, '09WOOD', 2, 50, 60, 80, 50, 100, 'Noce', 'Legno');

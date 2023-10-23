@@ -24,7 +24,19 @@
 
                             <p class="mb-1"><strong>Gioco</strong></p>
 
-                            <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                            <!-- SE IL VALORE DI SCONTO E' POSITIVO -->
+                            <?php if ($product->getDiscountValue() > 0) : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong>
+                                    <span class="text-decoration-line-through"><?= $product->getPrice() ?>€</span>
+                                    <?= $product->setDiscount() ?>€
+                                    <span class="badge text-bg-success">-<?= $product->getDiscountValue() ?>% !</span>
+                                </p>
+
+                                <!-- ALTRIMENTI PREZZO PIENO -->
+                            <?php else : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                            <?php endif ?>
+
                             <p class="mb-1"><strong>Colore: </strong><?= $product->getColor() ?></p>
                             <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
                             <p class="mb-1"><strong>In magazzino: </strong><?= $product->getStock() ?> pz</p>
@@ -37,7 +49,20 @@
 
                             <p class="mb-1"><strong>Cibo</strong></p>
 
-                            <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+
+                            <!-- SE IL VALORE DI SCONTO E' POSITIVO -->
+                            <?php if ($product->getDiscountValue() > 0) : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong>
+                                    <span class="text-decoration-line-through"><?= $product->getPrice() ?>€</span>
+                                    <?= $product->setDiscount() ?>€
+                                    <span class="badge text-bg-success">-<?= $product->getDiscountValue() ?>% !</span>
+                                </p>
+
+                                <!-- ALTRIMENTI PREZZO PIENO -->
+                            <?php else : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                            <?php endif ?>
+
                             <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
                             <p class="mb-1"><strong>Calorie: </strong><?= $product->getCalories() ?>cal</p>
                             <p class="mb-1"><strong>Alimento adatto a: </strong><?= $product->getAge() ?></p>
@@ -50,7 +75,19 @@
 
                             <p class="mb-1"><strong>Cuccia</strong></p>
 
-                            <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                            <!-- SE IL VALORE DI SCONTO E' POSITIVO -->
+                            <?php if ($product->getDiscountValue() > 0) : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong>
+                                    <span class="text-decoration-line-through"><?= $product->getPrice() ?>€</span>
+                                    <?= $product->setDiscount() ?>€
+                                    <span class="badge text-bg-success">-<?= $product->getDiscountValue() ?>% !</span>
+                                </p>
+
+                                <!-- ALTRIMENTI PREZZO PIENO -->
+                            <?php else : ?>
+                                <p class="mb-1"><strong>Prezzo: </strong><?= $product->getPrice() ?>€</p>
+                            <?php endif ?>
+
                             <p class="mb-1"><strong>Peso: </strong><?= $product->getWeight() ?>Kg</p>
                             <p class="mb-1"><strong>Misure: </strong><?= $product->getMesurements() ?></p>
                             <p class="mb-1"><strong>Materiale: </strong><?= $product->getMaterial() ?></p>
