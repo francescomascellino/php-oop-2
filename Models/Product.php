@@ -49,6 +49,7 @@ class Product
             throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
         }
 
+        // RETURNS THE DISCOUNT % VALUE
         return $this->discount;
     }
 
@@ -60,6 +61,7 @@ class Product
             throw new RangeException('IVALID DISCOUNT RANGE. THE VALUE MUST BE A NUMBER BETWEEN 0 AND 60');
         }
 
+        // RETURNS THE DISCOUNTED PRICE
         return round($this->price - (($this->discount * $this->price) / 100), 2);
     }
 }
