@@ -9,7 +9,8 @@ class Food extends Product
     public $calories;
     public $age;
 
-    public $type = 'food';
+    // STATIC ATTRIBUTE
+    static public $type = 'food';
 
     public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productCalories, string $productAge)
     {
@@ -37,5 +38,11 @@ class Food extends Product
     public function getAge()
     {
         return $this->age;
+    }
+
+    // STATIC ATTRIBUTE GETTER
+    public function getType()
+    {
+        return $this::$type;
     }
 }

@@ -6,7 +6,7 @@ class Kennel extends Product
     // USE TRAIT TO ACQUIRE GETTERS
     use MaterialInfo;
 
-    //FROM CLASS Category
+    // FROM CLASS Category
     public $category;
 
     // ISTANCE VARIABLES
@@ -17,7 +17,8 @@ class Kennel extends Product
     public $color;
     public $material;
 
-    public $type = 'kennel';
+    // STATIC ATTRIBUTE
+    static public $type = 'kennel';
 
     public function __construct($productCategory, string $name, float $price, string $code, int $stock, float $productWeigth, float $productHeigth, float $productWidth, float $productLength, string $productColor, string $productMaterial)
     {
@@ -55,4 +56,10 @@ class Kennel extends Product
     {
         return $this->material;
     } */
+
+    // STATIC ATTRIBUTE GETTER
+    public function getType()
+    {
+        return $this::$type;
+    }
 }

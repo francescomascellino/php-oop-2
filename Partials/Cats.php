@@ -19,7 +19,7 @@
 
                     <div class="card-body">
 
-                        <?php if ($product->type == 'toy') : ?>
+                        <?php if ($product->getType() == 'toy') : ?>
                             <h5><?= $product->getName() ?></h5>
 
                             <p class="mb-1"><strong>Gioco</strong></p>
@@ -32,7 +32,7 @@
 
                         <?php endif ?>
 
-                        <?php if ($product->type == 'food') : ?>
+                        <?php if ($product->getType() == 'food') : ?>
                             <h5><?= $product->getName() ?></h5>
 
                             <p class="mb-1"><strong>Cibo</strong></p>
@@ -45,7 +45,7 @@
                             <p class="mb-1"><strong>Codice Prodotto: </strong><?= $product->getCode() ?></p>
                         <?php endif ?>
 
-                        <?php if ($product->type == 'kennel') : ?>
+                        <?php if ($product->getType() == 'kennel') : ?>
                             <h5><?= $product->getName() ?></h5>
 
                             <p class="mb-1"><strong>Cuccia</strong></p>

@@ -6,7 +6,7 @@ class Toy extends Product
     // USE TRAIT TO ACQUIRE GETTERS
     use MaterialInfo;
 
-    //FROM CLASS Category
+    // FROM CLASS Category
     public $category;
 
     // ISTANCE VARIABLES
@@ -14,7 +14,8 @@ class Toy extends Product
     public $material;
     public $size;
 
-    public $type = 'toy';
+    // STATIC ATTRIBUTE
+    static public $type = 'toy';
 
     public function __construct($productCategory, string $name, float $price, string $code, int $stock, string $productColor, string $productMaterial, string $productSize)
     {
@@ -43,5 +44,11 @@ class Toy extends Product
     public function getSize()
     {
         return $this->size;
+    }
+
+    // STATIC ATTRIBUTE GETTER
+    public function getType()
+    {
+        return $this::$type;
     }
 }

@@ -25,7 +25,7 @@ include __DIR__ . '/head.php';
 
             <?php foreach ($productsList as $product) : ?>
 
-                <?php if ($product->category->pet == 'Cani' && $product->type == 'toy') : ?>
+                <?php if ($product->category->pet == 'Cani' && $product->getType() == 'toy') : ?>
 
                     <div class="col-4">
 
@@ -69,7 +69,7 @@ include __DIR__ . '/head.php';
 
             <?php foreach ($productsList as $product) : ?>
 
-                <?php if ($product->category->pet == 'Cani' && $product->type == 'food') : ?>
+                <?php if ($product->category->pet == 'Cani' && $product->getType() == 'food') : ?>
 
                     <div class="col-4">
 
@@ -114,7 +114,7 @@ include __DIR__ . '/head.php';
 
             <?php foreach ($productsList as $product) : ?>
 
-                <?php if ($product->category->pet == 'Cani' && $product->type == 'kennel') : ?>
+                <?php if ($product->category->pet == 'Cani' && $product->getType() == 'kennel') : ?>
 
                     <div class="col-4">
 
