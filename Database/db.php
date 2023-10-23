@@ -46,5 +46,6 @@ try {
     $testError = new Kennel($catCategory, 'Error Kennel', 100, '13ERR', 100, 80, 100, 100, 100, 100, 'TEST', 'TEST');
     $testError->getDiscountValue();
 } catch (Exception $e) {
+    // $e --> FULL MESSAGE / $e->getMessage() ONLY MESSAGE
     echo $e->getMessage();
 }
