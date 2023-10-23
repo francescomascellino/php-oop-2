@@ -36,11 +36,17 @@ $woodKennel = new Kennel($dogCategory, 'Cuccia in Legno Classica', 150, '09WOOD'
 $fluffyBed = new Kennel($dogCategory, 'Letto Morbido Fluffy', 15, '10FLUFFY', 15, 0, 3, 30, 50, 100, 'Bianco', 'Tassuto/Memory Foam');
 $mochi = new Kennel($catCategory, 'Letto Mochi', 24.99, '11MOCHI', 5, 60, 2.5, 25, 55, 55, 'Grigio Chiaro', 'Tessuto/Peluche');
 
-// COMMENT AND REMOVE COMMENT TO THE DUPED ISTANCE TO FORCE THE EXCEPTION ERROR ON DISCOUNT ATTRIBUTE
 $mupfel = new Kennel($catCategory, 'Letto Mupfel', 26.99, '12MUPFE', 8, 0, 2, 35, 50, 50, 'Beije/Marrone', 'Poliestere');
-
-//REMOVE THE COMMENT TO FORCE THE EXCEPTION ERROR ON DISCOUNT ATTRIBUTE (80 > 60)
-// $mupfel = new Kennel($catCategory, 'Letto Mupfel', 26.99, '12MUPFE', 8, 80, 2, 35, 50, 50, 'Beije/Marrone', 'Poliestere');
 
 $productsList = [];
 array_push($productsList, $kong, $fresbee, $mouse, $laser, $mongee, $oasy, $almonature, $exclusion, $woodKennel, $fluffyBed, $mochi, $mupfel);
+
+// REMOVE COMMENT TRO CATCH ERROR ON DISCOUNT ATTRIBUTE
+/* 
+try {
+    $testError = new Kennel($catCategory, 'Error Kennel', 100, '13ERR', 100, 80, 100, 100, 100, 100, 'TEST', 'TEST');
+    $testError->getDiscountValue();
+} catch (Exception $e) {
+    echo $e;
+}
+*/
