@@ -21,7 +21,7 @@ error_reporting(E_ALL);
 
 require __DIR__ . '/Database/db.php';
 
-include __DIR__ . '/Partials/head.php';
+include __DIR__ . '/Partials/Head.php';
 
 ?>
 

@@ -35,9 +35,9 @@
                 <div class="collapse navbar-collapse" id="oopNav">
 
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/PHP/php-oop-2/index.php">Home</a>
-                        <a class="nav-link active" aria-current="page" href="http://localhost/PHP/php-oop-2/Partials/ForDogs.php">Cani</a>
-                        <a class="nav-link active" aria-current="page" href="http://localhost/PHP/php-oop-2/Partials/ForCats.php">Gatti</a>
+                        <a class="nav-link active" aria-current="page" href="/PHP/php-oop-2/index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/PHP/php-oop-2/Partials/ForDogs.php">Cani</a>
+                        <a class="nav-link active" aria-current="page" href="/PHP/php-oop-2/Partials/ForCats.php">Gatti</a>
                     </div>
 
                 </div>
